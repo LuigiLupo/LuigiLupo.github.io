@@ -19,9 +19,17 @@ tw-story select:not([disabled]) {
   color: white;
 }
 
+tw-hook[name="navlink"] tw-link, tw-hook[name="navlink"] .enchantment-link {
+    color: green;
+}
 
+tw-hook[name="quelink"] tw-link, tw-hook[name="quelink"] .enchantment-link {
+    color: yellow;
+}
 
-</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Desktop" tags="" position="1125,225" size="100,100">(link: &quot;Work&quot;)[($nav: 2,&quot;Work&quot;)]
+tw-hook[name="locklink"] tw-link, tw-hook[name="locklink"] .enchantment-link {
+    color: red;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Desktop" tags="" position="1125,225" size="100,100">(link: &quot;Work&quot;)[($nav: 2,&quot;Work&quot;)]
 
 (link: &quot;Family&amp;FreeTime&quot;)[($nav: 2,&quot;Family&amp;FreeTime&quot;)]
 
@@ -31,13 +39,17 @@ tw-story select:not([disabled]) {
 
 </tw-passagedata><tw-passagedata pid="2" name="Work" tags="" position="900,1200" size="100,100">(link: &quot;Documents W&quot;)[($nav: 3,&quot;Documents W&quot;)]
 
-(link: &quot;Mail W&quot;)[($nav: 3,&quot;Mail W&quot;)]</tw-passagedata><tw-passagedata pid="3" name="Family&amp;FreeTime" tags="" position="1150,1650" size="100,100">(link: &quot;Documents F&quot;)[($nav: 3,&quot;Documents F&quot;)]
+(link: &quot;Mail W&quot;)[($nav: 3,&quot;Mail W&quot;)]
+
+</tw-passagedata><tw-passagedata pid="3" name="Family&amp;FreeTime" tags="" position="1150,1650" size="100,100">(link: &quot;Documents F&quot;)[($nav: 3,&quot;Documents F&quot;)]
 
 (link: &quot;Mail F&quot;)[($nav: 3,&quot;Mail F&quot;)]
 
 (link: &quot;Messages F&quot;)[($nav: 3,&quot;Messages F&quot;)]</tw-passagedata><tw-passagedata pid="4" name="Personal" tags="" position="800,500" size="100,100">{
-(if: $keyann1 is true)[[Annabelle]&lt;PasswordAnn1|]
-(if: $keyann2 is false)[(link: &quot;Annabelle&quot;)[($nav: 3,&quot;Annabelle&quot;)]]
+(if: $keyann1 is true)[
+|locklink&gt;[[Annabelle]&lt;PasswordAnn1|]
+]
+(if: $keyann1 is false)[(link: &quot;Annabelle&quot;)[($nav: 3,&quot;Annabelle&quot;)]]
 }
 
 (link: &quot;Documents P&quot;)[($nav: 3,&quot;Documents P&quot;)]
@@ -49,7 +61,7 @@ tw-story select:not([disabled]) {
 (click:?PasswordAnn1)
 [
 	(set: _answer8 to (prompt: &quot;Annie is O&#39;s?&quot;,&quot;&quot;))[_answer8]
-    (if: _answer8 is &quot;younger sister&quot;)[(set: $keyann1 to false) (go-to:&quot;Personal&quot;)] else:
+    (if: _answer8 is &quot;sister&quot;)[(set: $keyann1 to false) (go-to:&quot;Personal&quot;)] else:
     [(go-to:&quot;Personal&quot;)]
 ]
 }</tw-passagedata><tw-passagedata pid="5" name="Security" tags="" position="1500,0" size="100,100">(box:&quot;X&quot;,5)[
@@ -60,13 +72,13 @@ Repeated attempts to compromise database detected.
 Security level raised has been raised accordingly.
 
 Security codes will be required to access the database.
-
+]
 (if: $keysec1 is true)
 [
-[Logs]&lt;PasswordSec1|
-[Sensors]&lt;PasswordSec1|
-[Video]&lt;PasswordSec1|
-[Audio]&lt;PasswordSec1|
+|locklink&gt;[[Logs]&lt;PasswordSec1|]
+|locklink&gt;[[Sensors]&lt;PasswordSec1|]
+|locklink&gt;[[Video]&lt;PasswordSec1|]
+|locklink&gt;[[Audio]&lt;PasswordSec1|]
 ]
 
 (if: $keysec1 is false)
@@ -84,18 +96,19 @@ Security codes will be required to access the database.
     [(go-to:&quot;Security&quot;)]
 ]
 }
-]
 
 
 
 
 
-</tw-passagedata><tw-passagedata pid="6" name="FooterQuestMenu" tags="footer" position="400,100" size="100,100">(link: &quot;Questionnaires&quot;)[($nav: 1,&quot;Questionnaires&quot;)]
+
+</tw-passagedata><tw-passagedata pid="6" name="FooterQuestMenu" tags="footer" position="400,100" size="100,100">&lt;br&gt;
+|quelink&gt;[(link: &quot;Questionnaires&quot;)[($nav: 1,&quot;Questionnaires&quot;)]]
 
 
-(link: &quot;Desktop&quot;)[($nav: 1,&quot;Desktop&quot;)]
+|quelink&gt;[(link: &quot;Desktop&quot;)[($nav: 1,&quot;Desktop&quot;)]]
 
-</tw-passagedata><tw-passagedata pid="7" name="Questionnaires" tags="" position="100,400" size="100,100">(box:&quot;=X=&quot;,5)[
+</tw-passagedata><tw-passagedata pid="7" name="Questionnaires" tags="" position="100,400" size="100,100">(box:&quot;X&quot;,5)[
 {(if: $progress is 0)[ (link: &quot;Quest 1&quot;)[($nav: 2,&quot;Quest 1&quot;)] ]
 (else-if: $progress is 1)[ (link: &quot;Quest 2&quot;)[($nav: 2,&quot;Quest 2&quot;)] ]
 (else-if: $progress is 2)[ (link: &quot;Quest 3&quot;)[($nav: 2,&quot;Quest 3&quot;)] ]
@@ -346,23 +359,23 @@ How did the murderer leave the house undetected?(dropdown:  bind _q6,&quot;Sabot
 
 (link: &quot;2F01_20_04_0900.vid&quot;)[($nav: 4,&quot;2F01_20_04_0900.vid&quot;)]
 
-(link: &quot;1F01_ERR.vid&quot;)[($nav:4,&quot;1F01_ERR.vid&quot;)]
+(link: &quot;1F01ERR.vid&quot;)[($nav:4,&quot;1F01ERR.vid&quot;)]
 
-(link: &quot;1F01_ERR1.vid&quot;)[($nav:4,&quot;1F01_ERR1.vid&quot;)]
+(link: &quot;1F01ERR1.vid&quot;)[($nav:4,&quot;1F01ERR1.vid&quot;)]
 
-(link: &quot;1F01_ERR2.vid&quot;)[($nav:4,&quot;1F01_ERR2.vid&quot;)]
+(link: &quot;1F01ERR2.vid&quot;)[($nav:4,&quot;1F01ERR2.vid&quot;)]
 
-(link: &quot;1F01_ERR3.vid&quot;)[($nav:4,&quot;1F01_ERR3.vid&quot;)]</tw-passagedata><tw-passagedata pid="23" name="Audio" tags="" position="1700,500" size="100,100">(if: $keysec2 is true)
+(link: &quot;1F01ERR3.vid&quot;)[($nav:4,&quot;1F01ERR3.vid&quot;)]</tw-passagedata><tw-passagedata pid="23" name="Audio" tags="" position="1700,500" size="100,100">(if: $keysec2 is true)
 [
-[1F03_19_04_2100.mp4]&lt;PasswordSec2|
-[1F02_19_04_2105.mp4]&lt;PasswordSec2|
-[1F02_19_04_2135.mp4]&lt;PasswordSec2|
+|locklink&gt;[[1F03_19_04_2100.mp4]&lt;PasswordSec2|]
+|locklink&gt;[[1F02_19_04_2105.mp4]&lt;PasswordSec2|]
+|locklink&gt;[[1F02_19_04_2135.mp4]&lt;PasswordSec2|]
 
-[2F04_20_04_1000.mp4]&lt;PasswordSec2|
-[2F02_20_04_1000.mp4]&lt;PasswordSec2|
-[1F02_19_04_2136.mp4]&lt;PasswordSec2|
-[1F02_19_04_2137.mp4]&lt;PasswordSec2|
-[1F01_19_04_2200.mp4]&lt;PasswordSec2|
+|locklink&gt;[[2F04_20_04_1000.mp4]&lt;PasswordSec2|]
+|locklink&gt;[[2F02_20_04_1000.mp4]&lt;PasswordSec2|]
+|locklink&gt;[[1F02_19_04_2136.mp4]&lt;PasswordSec2|]
+|locklink&gt;[[1F02_19_04_2137.mp4]&lt;PasswordSec2|]
+|locklink&gt;[[1F01_19_04_2200.mp4]&lt;PasswordSec2|]
 ]
 (if: $keysec2 is false)
 [
@@ -380,11 +393,11 @@ How did the murderer leave the house undetected?(dropdown:  bind _q6,&quot;Sabot
 
 (if: $keysec3 is true)
 [
-[2F02_19_04_2132.mp4]&lt;PasswordSec3|
-[2F02_19_04_2134.mp4]&lt;PasswordSec3|
-[1F02_19_04_2138.mp4]&lt;PasswordSec3|
-[1F02_19_04_2140.mp4]&lt;PasswordSec3|
-[1F02_19_04_2139.mp4]&lt;PasswordSec3|
+|locklink&gt;[[2F02_19_04_2132.mp4]&lt;PasswordSec3|]
+|locklink&gt;[[2F02_19_04_2134.mp4]&lt;PasswordSec3|]
+|locklink&gt;[[1F02_19_04_2138.mp4]&lt;PasswordSec3|]
+|locklink&gt;[[1F02_19_04_2140.mp4]&lt;PasswordSec3|]
+|locklink&gt;[[1F02_19_04_2139.mp4]&lt;PasswordSec3|]
 ]
 (if: $keysec3 is false)
 [
@@ -396,15 +409,15 @@ How did the murderer leave the house undetected?(dropdown:  bind _q6,&quot;Sabot
 
 (if: $keysec4 is true)
 [
-[10.1]&lt;PasswordSec4|
+|locklink&gt;[[2F02_20_04_0904.mp4]&lt;PasswordSec4|]
 ]
 (if: $keysec4 is false)
 [
-(link: &quot;10.1&quot;)[($nav:4,&quot;10.1&quot;)]
+(link: &quot;2F02_20_04_0904.mp4&quot;)[($nav:4,&quot;2F02_20_04_0904.mp4&quot;)]
 ]
 ]
 ]
-
+{
 (click:?PasswordSec2)
 [
 	(set: _answer2 to (prompt: &quot;My doctor&#39;s last name?&quot;,&quot;&quot;))[_answer2]
@@ -421,29 +434,32 @@ How did the murderer leave the house undetected?(dropdown:  bind _q6,&quot;Sabot
 
 (click:?PasswordSec4)
 [
-	(set: _answer4 to (prompt: &quot;On what day did I lend the card?&quot;,&quot;&quot;))[_answer4]
+	(set: _answer4 to (prompt: &quot;On what day of the week did I lend the card?&quot;,&quot;&quot;))[_answer4]
     (if: _answer4 is &quot;saturday&quot;)[(set: $keysec4 to false) (go-to:&quot;Audio&quot;)] else:
     [(go-to:&quot;Audio&quot;)]
 ]
+}
 
-</tw-passagedata><tw-passagedata pid="24" name="sys_20_04_0135.log" tags="" position="1825,0" size="100,100">A system log.
+</tw-passagedata><tw-passagedata pid="24" name="sys_20_04_0135.log" tags="" position="1825,0" size="100,100">
+A system log.
 
 Sat 04/20
 
 01.35
-
+(box:&quot;X&quot;,5)[
 Attempted deletion operation for several files.
 
 Error! 
 
 The system is currently undergoing maintenance, your request could not be completed.
-
-(link: &quot;Logs&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Logs&quot;) (go-to: &quot;Logs&quot;)]</tw-passagedata><tw-passagedata pid="25" name="del_20_04_0900.log" tags="" position="1950,0" size="100,100">A deletion log.
+]
+&lt;!--(link: &quot;Logs&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Logs&quot;) (go-to: &quot;Logs&quot;)]--&gt;
+</tw-passagedata><tw-passagedata pid="25" name="del_20_04_0900.log" tags="" position="1950,0" size="100,100">A deletion log.
 
 Sat 04/20
 
 09.00
-
+(box:&quot;X&quot;,5)[
 The last log deletion attempt was only partially successful.
 Some files are damaged or incomplete, the local database and the cloud database do not match.
 
@@ -454,12 +470,13 @@ Restore operation cancelled, the system will proceed directly with the deletion 
 
 Error! 
 Deletion operation aborted.
-
-(link: &quot;Logs&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Logs&quot;) (go-to: &quot;Logs&quot;)]</tw-passagedata><tw-passagedata pid="26" name="sen_19&amp;20_04_F2D1.log" tags="" position="1825,125" size="100,100">A security log, containing data from the sensors on the Bedroom’s door.
+]
+&lt;!--(link: &quot;Logs&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Logs&quot;) (go-to: &quot;Logs&quot;)]--&gt;</tw-passagedata><tw-passagedata pid="26" name="sen_19&amp;20_04_F2D1.log" tags="" position="1825,125" size="100,100">A security log, containing data from the sensors on the Bedroom’s door.
 
 Bedroom Door: 
 
 04/19
+(box:&quot;X&quot;,5)[
 
 08.40 
 Exit
@@ -480,12 +497,13 @@ Access
 
 09.05 
 Exit
-
-(link: &quot;Sensors&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Sensors&quot;) (go-to: &quot;Sensors&quot;)]</tw-passagedata><tw-passagedata pid="27" name="sen_19&amp;20_04_F1D1.log" tags="" position="1950,125" size="100,100">A security log fragment, containing data from the sensors on the Entrance door.
+]
+&lt;!--(link: &quot;Sensors&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Sensors&quot;) (go-to: &quot;Sensors&quot;)]--&gt;</tw-passagedata><tw-passagedata pid="27" name="sen_19&amp;20_04_F1D1.log" tags="" position="1950,125" size="100,100">A security log fragment, containing data from the sensors on the Entrance door.
 
 Entrance Door:
 
 4/19
+(box:&quot;X&quot;,5)[
 
 10.00
 Exit
@@ -515,12 +533,13 @@ Access
 
 9.45
 Access
-
-(link: &quot;Sensors&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Sensors&quot;) (go-to: &quot;Sensors&quot;)]</tw-passagedata><tw-passagedata pid="28" name="2F01_19_04_2114.vid" tags="" position="1825,300" size="100,100">A couple of recordings from the security camera in the Hallway of the 2nd floor.
+]
+&lt;!--(link: &quot;Sensors&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Sensors&quot;) (go-to: &quot;Sensors&quot;)]--&gt;</tw-passagedata><tw-passagedata pid="28" name="2F01_19_04_2114.vid" tags="" position="1825,300" size="100,100">A couple of recordings from the security camera in the Hallway of the 2nd floor.
 
 Camera: 2F_01
 
 4/19
+(box:&quot;X&quot;,5)[
 
 21.14
 
@@ -530,39 +549,44 @@ Richard looks unconscious, he leans heavily on Annabelle and does not seem to be
 21.15
 
 Less than a minute after they entered the Bedroom, Annabelle comes out alone, and heads towards the Stairs leading to the First Floor.
+]
 
-
-(link: &quot;Video&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Video&quot;) (go-to: &quot;Video&quot;)]</tw-passagedata><tw-passagedata pid="29" name="1F01_ERR.vid" tags="" position="2200,300" size="100,100">A recording from the security camera at the Entrance.
+&lt;!--(link: &quot;Video&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Video&quot;) (go-to: &quot;Video&quot;)]--&gt;</tw-passagedata><tw-passagedata pid="29" name="1F01ERR.vid" tags="" position="2200,300" size="100,100">A recording from the security camera at the Entrance.
 
 Date/Time missing.
+(box:&quot;X&quot;,5)[
 
 Francine and Thomas can be seen leaving the mansion. 
 They seem to be in a hurry, and Francine is clearly distraught.
-
-(link: &quot;Video&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Video&quot;) (go-to: &quot;Video&quot;)]</tw-passagedata><tw-passagedata pid="30" name="1F01_ERR1.vid" tags="" position="2325,300" size="100,100">A recording from the security camera at the Entrance.
+]
+&lt;!--(link: &quot;Video&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Video&quot;) (go-to: &quot;Video&quot;)]--&gt;</tw-passagedata><tw-passagedata pid="30" name="1F01ERR1.vid" tags="" position="2325,300" size="100,100">A recording from the security camera at the Entrance.
 
 Date/Time missing.
+(box:&quot;X&quot;,5)[
 
 Olivia can be seen leaving the mansion. She looks happy about something.
-
-(link: &quot;Video&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Video&quot;) (go-to: &quot;Video&quot;)]</tw-passagedata><tw-passagedata pid="31" name="1F01_ERR2.vid" tags="" position="2450,300" size="100,100">A recording from the security camera at the Entrance.
+]
+&lt;!--(link: &quot;Video&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Video&quot;) (go-to: &quot;Video&quot;)]--&gt;</tw-passagedata><tw-passagedata pid="31" name="1F01ERR2.vid" tags="" position="2450,300" size="100,100">A recording from the security camera at the Entrance.
 
 Date/Time missing.
+(box:&quot;X&quot;,5)[
 
 William can be seen leaving the mansion, with Annabelle accompanying him to the door. 
 He seems reluctant to leave, Annabelle almost has to march him out of the building.
-
-(link: &quot;Video&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Video&quot;) (go-to: &quot;Video&quot;)]</tw-passagedata><tw-passagedata pid="32" name="1F01_ERR3.vid" tags="" position="2575,300" size="100,100">A recording from the security camera at the Entrance.
+]
+&lt;!--(link: &quot;Video&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Video&quot;) (go-to: &quot;Video&quot;)]--&gt;</tw-passagedata><tw-passagedata pid="32" name="1F01ERR3.vid" tags="" position="2575,300" size="100,100">A recording from the security camera at the Entrance.
 
 Date/Time missing.
+(box:&quot;X&quot;,5)[
 
 File deleted.
-
-(link: &quot;Video&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Video&quot;) (go-to: &quot;Video&quot;)]</tw-passagedata><tw-passagedata pid="33" name="1F03_19_04_2100.mp4" tags="" position="1825,500" size="100,100">A partial audio recording from a microphone in the Kitchen.
+]
+&lt;!--(link: &quot;Video&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Video&quot;) (go-to: &quot;Video&quot;)]--&gt;</tw-passagedata><tw-passagedata pid="33" name="1F03_19_04_2100.mp4" tags="" position="1825,500" size="100,100">A partial audio recording from a microphone in the Kitchen.
 
 Mic: 1F_03
 
 4/19
+(box:&quot;X&quot;,5)[
 
 21.10
 
@@ -571,13 +595,14 @@ Mic: 1F_03
 “Oh shit. Is he breathing?…did I…. What do I do now, what do I do?!”
 
 The rest of the registration is damaged or missing
-
-(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]
+]
+&lt;!--(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]--&gt;
 </tw-passagedata><tw-passagedata pid="34" name="1F02_19_04_2105.mp4" tags="" position="2200,500" size="100,100">An audio recording from a microphone in the Dining Room.
 
 Mic: 1F_02
 
 4/19
+(box:&quot;X&quot;,5)[
 
 21.05
 
@@ -600,13 +625,14 @@ Mic: 1F_02
 Sound of plate breaking
 
 “You don’t get to talk to me like that! You hear me, woman!”
-
-(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]
+]
+&lt;!--(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]--&gt;
 </tw-passagedata><tw-passagedata pid="35" name="1F02_19_04_2135.mp4" tags="" position="2325,500" size="100,100">A partial audio recording from a microphone in the Dining Room.
 
 Mic: 1F_02
 
 4/19
+(box:&quot;X&quot;,5)[
 
 21.35
 
@@ -625,13 +651,14 @@ Mic: 1F_02
 “I’d appreciate it if you all left. I don’t want to talk.”
 
 The registration seems to be incomplete
-
-(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]
+]
+&lt;!--(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]--&gt;
 </tw-passagedata><tw-passagedata pid="36" name="1F02_19_04_2136.mp4" tags="" position="2700,500" size="100,100">A partial audio recording from a microphone in the Dining Room.
 
 Mic: 1F_02
 
 4/19
+(box:&quot;X&quot;,5)[
 
 21.36
 
@@ -642,12 +669,13 @@ Mic: 1F_02
 “Go, all of you. Stop pretending you care. It’s sickening.”
 
 “If any of you wanted to help, you’d have gutted that pig. That’s why I invited you here!”
-
-(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]</tw-passagedata><tw-passagedata pid="37" name="1F02_19_04_2137.mp4" tags="" position="2825,500" size="100,100">A partial audio recording from a microphone in the Dining Room.
+]
+&lt;!--(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]--&gt;</tw-passagedata><tw-passagedata pid="37" name="1F02_19_04_2137.mp4" tags="" position="2825,500" size="100,100">A partial audio recording from a microphone in the Dining Room.
 
 Mic: 1F_02
 
 4/19
+(box:&quot;X&quot;,5)[
 
 21.37
 
@@ -659,95 +687,101 @@ Mic: 1F_02
 
 “And you… his little toy… you had it as bad as me, he used you like a rag on that fucking set, and the best you could do was crying at me?”
 
-“You’re not better than me, you’re all worthless! Go away, get out!”
-
-(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]</tw-passagedata><tw-passagedata pid="38" name="2F02_19_04_2132.mp4" tags="" position="1825,625" size="100,100">A partial audio recording from a microphone in the Second Floor Hallway.
+“You... you’re all worthless! Go away, get out!”
+]
+&lt;!--(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]--&gt;</tw-passagedata><tw-passagedata pid="38" name="2F02_19_04_2132.mp4" tags="" position="1825,625" size="100,100">A partial audio recording from a microphone in the Second Floor Hallway.
 
 Mic: 2F_02
 
 4/19
+(box:&quot;X&quot;,5)[
 
 21.32
 
-“Hey, if he is dead, you want to stay as far from the body as possible.”
+“Hey, if he is dead you want to stay as far from the body as possible.”
 
 “The silent treatment? Look dude, you’re wasting your time. She isn’t worth it.”
 
 “How dare you! She’s your family!”
 
 “Sure didn’t act like it.”
-
-(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]</tw-passagedata><tw-passagedata pid="39" name="2F02_19_04_2134.mp4" tags="" position="1950,625" size="100,100">A partial audio recording from a microphone in the Second Floor Hallway.
+]
+&lt;!--(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]--&gt;</tw-passagedata><tw-passagedata pid="39" name="2F02_19_04_2134.mp4" tags="" position="1950,625" size="100,100">A partial audio recording from a microphone in the Second Floor Hallway.
 
 Mic: 2F_02
 
 4/19
+(box:&quot;X&quot;,5)[
 
 21.34
 
 “Yes I can hear you Will, now stop knocking and fuck off, my head is killing me!”
 
 “There you go, he’s alive. Now can we go?”
-
-(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]</tw-passagedata><tw-passagedata pid="40" name="1F02_19_04_2138.mp4" tags="" position="2075,625" size="100,100">A partial audio recording from a microphone in the Dining Room.
+]
+&lt;!--(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]--&gt;</tw-passagedata><tw-passagedata pid="40" name="1F02_19_04_2138.mp4" tags="" position="2075,625" size="100,100">A partial audio recording from a microphone in the Dining Room.
 
 Mic: 1F_02
 
 4/19
+(box:&quot;X&quot;,5)[
 
 21.38
 
 “Oh that’s just too rich. You really haven’t changed huh?”
 
 “Well, sorry, big bis isn’t gonna get you out of trouble this time. Had enough trouble with the law already. I’m gonna sit back and wait to get my part.”
-
-(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]</tw-passagedata><tw-passagedata pid="41" name="1F02_19_04_2140.mp4" tags="" position="2200,625" size="100,100">A partial audio recording from a microphone in the Dining Room.
+]
+&lt;!--(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]--&gt;</tw-passagedata><tw-passagedata pid="41" name="1F02_19_04_2140.mp4" tags="" position="2200,625" size="100,100">A partial audio recording from a microphone in the Dining Room.
 
 Mic: 1F_02
 
 4/19
+(box:&quot;X&quot;,5)[
 
 21.40
 
 “Calm down Tommy, please!”
-“Calm down! After what he did to you? How he treated you? I’m gonna… I will…”
-
-(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]</tw-passagedata><tw-passagedata pid="42" name="1F02_19_04_2139.mp4" tags="" position="2325,625" size="100,100">A partial audio recording from a microphone in the Dining Room.
+“Calm down! After what he did to you? How he treated you? I’m gonna… I&#39;ll…”
+]
+&lt;!--(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]--&gt;</tw-passagedata><tw-passagedata pid="42" name="1F02_19_04_2139.mp4" tags="" position="2325,625" size="100,100">A partial audio recording from a microphone in the Dining Room.
 
 Mic: 1F_02
 
 4/19
+(box:&quot;X&quot;,5)[
 
 21.39
 
 “You are joking, right? No, God, no, I never noticed, why, how?”
-
-(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]</tw-passagedata><tw-passagedata pid="43" name="10.1" tags="" position="1825,750" size="100,100">A recording from a microphone in the Dining Room.
+]
+&lt;!--(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]--&gt;</tw-passagedata><tw-passagedata pid="43" name="2F02_20_04_0904.mp4" tags="" position="1825,750" size="100,100">A recording from a microphone in the Dining Room.
 
 Mic: 2F_02
 
 4/20
+(box:&quot;X&quot;,5)[
 
 9.04
 
 “Richard? I can hear you upstairs you asshole! I’ve had enough of this, you hear me? I’m leaving!”
 
 “Oh no, you don’t get to ignore me this time. We’re going to talk about your little prank now, you sack of shit!”
-
-(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]</tw-passagedata><tw-passagedata pid="44" name="Annabelle" tags="" position="800,625" size="100,100">
+]
+&lt;!--(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]--&gt;</tw-passagedata><tw-passagedata pid="44" name="Annabelle" tags="" position="800,625" size="100,100">
 (if: $keyann2 is true)
 [
-[0419_11.00.msg]&lt;PasswordAnn2|
+|locklink&gt;[[1904_11.00.msg]&lt;PasswordAnn2|]
 ]
 (if: $keyann2 is false)
 [
-(link: &quot;0419_11.00.msg&quot;)[($nav:4,&quot;0419_11.00.msg&quot;)]
+(link: &quot;1904_11.00.msg&quot;)[($nav:4,&quot;1904_11.00.msg&quot;)]
 ]
 
-(link: &quot;0420_9.05_911.call&quot;)[($nav:4,&quot;0420_9.05_911.call&quot;)]
+(link: &quot;2004_9.05_911.call&quot;)[($nav:4,&quot;2004_9.05_911.call&quot;)]
 (link: &quot;List.txt&quot;)[($nav:4,&quot;List.txt&quot;)]
-(link: &quot;0419_21.57.msg&quot;)[($nav:4,&quot;0419_21.57.msg&quot;)]
-(link: &quot;0331_18.30.msg&quot;)[($nav:4,&quot;0331_18.30.msg&quot;)]
+(link: &quot;1904_21.57.msg&quot;)[($nav:4,&quot;1904_21.57.msg&quot;)]
+(link: &quot;3103_18.30.msg&quot;)[($nav:4,&quot;3103_18.30.msg&quot;)]
 (link: &quot;Poem.png&quot;)[($nav:4,&quot;Poem.png&quot;)]
 
 {
@@ -758,19 +792,19 @@ Mic: 2F_02
     [(go-to:&quot;Annabelle&quot;)]
 ]
 }</tw-passagedata><tw-passagedata pid="45" name="Documents P" tags="" position="800,750" size="100,100">(link: &quot;DocNote.txt&quot;)[($nav:4,&quot;DocNote.txt&quot;)]
-</tw-passagedata><tw-passagedata pid="46" name="Messages P" tags="" position="800,875" size="100,100">(link: &quot;0419_8.35.msg&quot;)[($nav:4,&quot;0419_8.35.msg&quot;)]
-(link: &quot;0419_9.00.msg&quot;)[($nav:4,&quot;0419_9.00.msg&quot;)]
-(link: &quot;0419_9.35.msg&quot;)[($nav:4,&quot;0419_9.35.msg&quot;)]
+</tw-passagedata><tw-passagedata pid="46" name="Messages P" tags="" position="800,875" size="100,100">(link: &quot;1904_8.35.msg&quot;)[($nav:4,&quot;1904_8.35.msg&quot;)]
+(link: &quot;1904_9.00.msg&quot;)[($nav:4,&quot;1904_9.00.msg&quot;)]
+(link: &quot;1904_9.35.msg&quot;)[($nav:4,&quot;1904_9.35.msg&quot;)]
 
 (if: $keypers1 is true)
 [
-[0418_7.25.msg]&lt;PasswordPer1|
-[0316_17.00.msg]&lt;PasswordPer1|
+|locklink&gt;[[1804_7.25.msg]&lt;PasswordPer1|]
+|locklink&gt;[[1603_17.00.msg]&lt;PasswordPer1|]
 ]
 (if: $keypers1 is false)
 [
-(link: &quot;0418_7.25.msg&quot;)[($nav:4,&quot;0418_7.25.msg&quot;)]
-(link: &quot;0316_17.00.msg&quot;)[($nav:4,&quot;0316_17.00.msg&quot;)]
+(link: &quot;1804_7.25.msg&quot;)[($nav:4,&quot;1804_7.25.msg&quot;)]
+(link: &quot;1603_17.00.msg&quot;)[($nav:4,&quot;1603_17.00.msg&quot;)]
 ]
 {
 (click:?PasswordPer1)
@@ -782,32 +816,39 @@ Mic: 2F_02
 }</tw-passagedata><tw-passagedata pid="47" name="Mail P" tags="" position="800,1000" size="100,100">(link: &quot;PartyTomorrowEvening.eml&quot;)[($nav:4,&quot;PartyTomorrowEvening.eml&quot;)]
 (link: &quot;DivorcePetition.eml&quot;)[($nav:4,&quot;DivorcePetition.eml&quot;)]
 (link: &quot;Aboutyouroffer.eml&quot;)[($nav:4,&quot;Aboutyouroffer.eml&quot;)]
-</tw-passagedata><tw-passagedata pid="48" name="0419_11.00.msg" tags="" position="925,625" size="100,100">A text exchange between Annabelle and Francine.
+</tw-passagedata><tw-passagedata pid="48" name="1904_11.00.msg" tags="" position="925,625" size="100,100">A text exchange between Annabelle and Francine.
 
-Fri 04/19  
+Fri 19/04
 
 11.00 AM
+(box:&quot;X&quot;,5)[
 
 Hi. Is everything alright?
 If you don’t feel like coming, don’t force yourself.
 
-I asked Thomas to come too, he said yes.
+==&gt;
+I asked Thomas to come with me, he said yes.
 
+&lt;==
 I’m glad for you. 
 He won’t try anything with him here. 
 
 And if he does, I’ll keep him in line.
 
+==&gt;
 I still can’t believe you don’t hate me.
 
-Hate you? Why? You were exploited. It’s not you I should hate. 
+&lt;==
+Hate you? Why? For being exploited by that pig? It’s not you I should hate.
 
-You are an angel Annie, I don&#39;t know how you do it.</tw-passagedata><tw-passagedata pid="49" name="0420_9.05_911.call" tags="" position="1100,625" size="100,100">A phone call.
+==&gt;
+You are an angel Annie, I don&#39;t know how you do it.
+]</tw-passagedata><tw-passagedata pid="49" name="2004_9.05_911.call" tags="" position="1050,625" size="100,100">A phone call.
 
 Sat 04/20
 
 9.05 AM
-
+(box:&quot;X&quot;,5)[
 “911, what’s your emergency?”
 
 “Richard, my husband, he.. he’s…”
@@ -818,25 +859,28 @@ Sat 04/20
 
 “There’s blood everywhere, everywhere! I don’t know what to do, I can’t… I can’t…”
 
-“Stay where you are, Miss Owens, I’m sending an ambulance and a police squad. Help will be there soon.”</tw-passagedata><tw-passagedata pid="50" name="List.txt" tags="" position="1225,625" size="100,100">A grocery list.
+“Stay where you are, Miss Owens, I’m sending an ambulance and a police squad. Help will be there soon.”
+]</tw-passagedata><tw-passagedata pid="50" name="List.txt" tags="" position="1175,625" size="100,100">A grocery list.
+(box:&quot;X&quot;,5)[
 
 Sun 04/07
 
 - Toilet paper
 - Fish for dinner (Tuna?)
 - Terliazin Sleep
-
+]
 A comment has been attached to this file.
-“Does she know? Maybe she is finally gonna try and kill me.”</tw-passagedata><tw-passagedata pid="51" name="0419_21.57.msg" tags="" position="1350,625" size="100,100">A phone message from Francine. It’s been edited many times.
+“Does she know? Maybe she is finally gonna try and kill me.”</tw-passagedata><tw-passagedata pid="51" name="1904_21.57.msg" tags="" position="1300,625" size="100,100">A phone message from Francine. It’s been edited many times.
 
 Fri 04/19  
 
 09.57 PM
-
+(box:&quot;X&quot;,5)[
 Hi Annabelle.
 
-You were in pain, you’ve been for a long time, and so you told Thomas and everyone.
-I asked you never to, and you did it anyway. I know it was just a mistake.
+You were in pain, you’ve been in pain for a long time, and so you told Thomas and everyone.
+I asked you never to, and you did it anyway. 
+I know it was just a mistake.
 I know you well enough.
 
 I won’t lie, I am so angry and sad right now, and I have to watch out for Thomas.
@@ -846,38 +890,51 @@ I’m afraid he’ll do something stupid if I leave him alone.
 We are still friends.
 Thank you for all you’ve done for me, I hope we can talk again one day.
 
-Please get out of there as soon as possible.</tw-passagedata><tw-passagedata pid="52" name="0331_18.30.msg" tags="" position="1475,625" size="100,100">A text exchange between Annabelle and Richard.
+Please get out of there as soon as possible.
+]</tw-passagedata><tw-passagedata pid="52" name="3103_18.30.msg" tags="" position="1425,625" size="100,100">A text exchange between Annabelle and Richard.
 
 Sun 03/31
 
 06.30 PM
+(box:&quot;X&quot;,5)[
 
-“I don’t care for your petty shitty pranks, Richard, but that was a bridge too far. 
-I thought I was going to have a heart attack.”
+I don’t care for your petty shitty pranks, Richard, but that was a bridge too far. 
+I thought I was going to have a heart attack
 
-“Oh wow, Olivia was right&quot;
-&quot;You ARE a wuss when it comes to blood, even when it’s fake.”
+==&gt;
+Oh wow, Olivia was right
+You ARE a wuss when it comes to blood, even when it’s fake
 
-“How do you know about Olivia?”
+&lt;==
+How do you know about Olivia?
 
-“Honestly I’m hurt, you never told me I have a sister in law! Or that you came 	from that part of town. I hear you ran away, leaving your family behind. How heartless.”
+==&gt;
+Honestly I’m hurt, you never told me I have a sister in law! 
+Or that you came from that part of town. I hear you ran away, leaving your family behind. How heartless.
 
-“Don’t make me repeat myself, Richard.”
+&lt;==
+Don’t make me repeat myself, Richard.
 
-“Or you’ll do what? I’m the one with the money, Annie.&quot;
-&quot;Speaking of which, smile, dear, you’re on camera.”
+==&gt;
+Or you’ll do what? I’m the one with the money, Annie.
+Speaking of which, smile, dear, you’re on camera.
 
-“The security system works inside the mansion too?”
+&lt;==
+The security system works inside the mansion too?
 
-“It sure does. Microphone, cameras, you name it, it’s there in the room with you. Recording.
-So don’t try anything clever, play your part, because I will know.”
+==&gt;
+It sure does. Microphone, cameras, you name it, it’s there in the room with you. Recording.
+So don’t try anything clever, play your part, because I will know.
 
-&quot;Are you insane? There’s no way this is legal.&quot;</tw-passagedata><tw-passagedata pid="53" name="Poem.png" tags="" position="1600,625" size="100,100">A photo of a poem written on notebook paper. 
+&lt;==
+Are you insane? There’s no way this is legal.
+]</tw-passagedata><tw-passagedata pid="53" name="Poem.png" tags="" position="1550,625" size="100,100">A photo of a poem written on notebook paper. 
 
-The file is many years old. The handwriting is barely readable.
+Both the paper and the file are many years old. The handwriting is barely readable.
 
 It’s signed:
 “From an anonymous admirer, to their beautiful shining star.”</tw-passagedata><tw-passagedata pid="54" name="DocNote.txt" tags="" position="925,750" size="100,100">An old note attached to a medical diagnosis.
+(box:&quot;X&quot;,5)[
 
 Esteemed Mr. Rover Owens,
 
@@ -890,42 +947,53 @@ Be especially wary of sleep medication: several over-the-counter sleep aids cont
 If you ever have doubts about a medication being safe for you or not, contact me immediately.
 
 Dr. Rupert Bond
-</tw-passagedata><tw-passagedata pid="55" name="0419_9.00.msg" tags="" position="1050,875" size="100,100">A text exchange between Richard and Francine.
+]
+</tw-passagedata><tw-passagedata pid="55" name="1904_9.00.msg" tags="" position="1050,875" size="100,100">A text exchange between Richard and Francine.
 
-Fri 04/19  
+Fri 19/04  
 
 9.00 AM
+(box:&quot;X&quot;,5)[
 
 I saw you forwarded the mail to this “Thomas” guy. 
 
 Anything I should know? It’s a private party.
 
+==&gt;
 He’s my boyfriend, Richard. 
 
-Oh ok. Sure, he can come.</tw-passagedata><tw-passagedata pid="56" name="0419_9.35.msg" tags="" position="1175,875" size="100,100">A text exchange between Richard and Olivia.
+&lt;==
+Oh ok. Sure, he can come.
+]</tw-passagedata><tw-passagedata pid="56" name="1904_9.35.msg" tags="" position="1175,875" size="100,100">A text exchange between Richard and Olivia.
 
-Fri 04/19  
+Fri 19/04  
 
 9.35 AM
+(box:&quot;X&quot;,5)[
 
 Hey Olivia, how’s it going?
 
+==&gt;
 Who are you again?
 
+&lt;==
 Sheesh, fine, Miss Blanc. Will you be at the party?
 
-Sure.</tw-passagedata><tw-passagedata pid="57" name="0418_7.25.msg" tags="" position="1325,875" size="100,100">A message exchange between Richard and Olivia.
+==&gt;
+Sure.
+]</tw-passagedata><tw-passagedata pid="57" name="1804_7.25.msg" tags="" position="1325,875" size="100,100">A message exchange between Richard and Olivia.
 
-Thu 04/18 
+Thu 18/04 
 
 07.25 PM
+(box:&quot;X&quot;,5)[
 
 So, Olivia, here’s the deal. I am half sure little Annabelle is gonna try and poison me tomorrow evening.
 
-
+==&gt;
 You’re joking. She doesn’t have the balls for that. 
 
-
+&lt;==
 Maybe, maybe not. I just don’t like her attitude as of late.
 
 Point is, it’s time I teach her a lesson, so how about we both make good on our deal?
@@ -934,47 +1002,49 @@ I’m gonna swap the pills she’s gonna use with something a lot weaker.
 It will knock me out, and it will hurt like a bitch. I’ll sleep a lot for a few days, but I&#39;ll live.
 You just gotta help me make her think I’m dead for a few hours, give her a little scare.
 
-
+==&gt;
 What are you, twelve?
 
-
+&lt;==
 I wish. Up for making 5 figures for a few hours of work?
 
-
+==&gt;
 Now we are talking. I&#39;m in.
 What happens if it goes wrong though?
 
-
+&lt;==
 Not much really. I die.
 
-
+==&gt;
 Yeah who cares. 
 I just don’t wanna get involved if things go sideways.
 
-
+&lt;==
 Don’t worry. A few clicks and no one can prove you were ever even here.
-Isn’t technology amazing?</tw-passagedata><tw-passagedata pid="58" name="0316_17.00.msg" tags="" position="1450,875" size="100,100">A message exchange between Richard and Annabelle.
+Isn’t technology amazing?
+]</tw-passagedata><tw-passagedata pid="58" name="1603_17.00.msg" tags="" position="1450,875" size="100,100">A message exchange between Richard and Annabelle.
 
-Tue 03/16
+Tue 16/03
 
 05.00 PM
-
+(box:&quot;X&quot;,5)[
+==&gt;
 Richard, goddammit!
 
-
+&lt;==
 What now? 
 
-
+==&gt;
 You told me you’d give me a keycard yesterday! 
 I tried to use it and the alarm went off! 
 I almost got tackled by security!
 
-
+&lt;==
 Oh that’s hilarious. Tell me the cameras caught that.
 
-
+==&gt;
 Fuck you! I just wanted to see my friends.
-
+]
 
 Now, now dear, I forgot about giving you the keycard, my bad, but if you didn’t take it without telling me, that wouldn’t have happened. I thought it had been stolen.
 
@@ -999,7 +1069,7 @@ Going back to your roots, little street rat?
 
 I don’t know why I bother. Fuck you, you insufferable manchild.</tw-passagedata><tw-passagedata pid="59" name="PartyTomorrowEvening.eml" tags="" position="925,1000" size="100,100">An email addressed to multiple people.
 
-Fri 04/19  
+Fri 19/04
 
 8.30 AM
 
@@ -1009,18 +1079,19 @@ To: William Redson
 CC: Francine Collins, Olivia Blanc
 
 Text: 
+(box:&quot;X&quot;,5)[
 Hello everyone. 
 Annabelle and I thought of throwing a party to celebrate the premiere of my movie, it looks like it’s going to be another smash hit, and we’d love to have you.
 
 See you tomorrow at 20.00
 
 Richard Rover Owens
-
+]
 Note:
 
 This Mail has been forwarded 1 time, from Francine Collins to Thomas Davis.</tw-passagedata><tw-passagedata pid="60" name="DivorcePetition.eml" tags="" position="1050,1000" size="100,100">An email from a lawyer firm.
 
-Wed 04/05
+Wed 05/04
 
 4.00 PM
 
@@ -1030,7 +1101,8 @@ Divorce Petition
 From: 
 Smith and sons
 
-Text: 
+Text:
+(box:&quot;X&quot;,5)[
 Esteemed Mr. Rover Owens,
 
 A pleasure to make your acquaintance, I am Smith, of Smith and sons, attorney.
@@ -1041,9 +1113,10 @@ You have one month to respond to the filing.
 
 Thank you for your time,
 
-Smith</tw-passagedata><tw-passagedata pid="61" name="Documents W" tags="" position="900,1325" size="100,100">(if: $keywork1 is true)
+Smith
+]</tw-passagedata><tw-passagedata pid="61" name="Documents W" tags="" position="900,1325" size="100,100">(if: $keywork1 is true)
 [
-[SunriseCover0304.pdf]&lt;PasswordWor1|
+|locklink&gt;[[SunriseCover0304.pdf]&lt;PasswordWor1|]
 ]
 (if: $keywork1 is false)
 [
@@ -1056,9 +1129,10 @@ Smith</tw-passagedata><tw-passagedata pid="61" name="Documents W" tags="" positi
     (if: _answer5 is &quot;francine&quot;)[(set: $keywork1 to false) (go-to:&quot;Documents W&quot;)] else:
     [(go-to:&quot;Documents W&quot;)]
 ]
-}</tw-passagedata><tw-passagedata pid="62" name="Mail W" tags="" position="900,1450" size="100,100">(if: $keywork1 is true)
+}
+</tw-passagedata><tw-passagedata pid="62" name="Mail W" tags="" position="900,1450" size="100,100">(if: $keywork1 is true)
 [
-[ProofreadingSession.eml]&lt;PasswordWor1|
+|locklink&gt;[[ProofreadingSession.eml]&lt;PasswordWor1|]
 ]
 (if: $keywork1 is false)
 [
@@ -1071,11 +1145,11 @@ Smith</tw-passagedata><tw-passagedata pid="61" name="Documents W" tags="" positi
 
 (if: $keywork2 is true)
 [
-[SecuritySystemSpecifications2.eml]&lt;PasswordWor2|
+|locklink&gt;[[SecuritySystemSpecifications2.eml]&lt;PasswordWor2|]
 
-[MaintenanceNotification.eml]&lt;PasswordWor2|
+|locklink&gt;[[MaintenanceNotification.eml]&lt;PasswordWor2|]
 
-[ProofreadingSessionkey]&lt;PasswordWor2|
+|locklink&gt;[[ProofreadingSessionkey]&lt;PasswordWor2|]
 ]
 (if: $keywork2 is false)
 [
@@ -1102,6 +1176,7 @@ Smith</tw-passagedata><tw-passagedata pid="61" name="Documents W" tags="" positi
 }</tw-passagedata><tw-passagedata pid="63" name="SunriseCover0304.pdf" tags="" position="1025,1325" size="100,100">An excerpt from a tabloid.
 
 Mon 03/04
+(box:&quot;X&quot;,5)[
 
 “Actress Francine Collins seen having lunch with Richard Rover Owens again!”
 
@@ -1112,11 +1187,12 @@ As many of our readers speculate about the exact relationship between the two, w
 “Don’t you guys have anything better to do?” was all the director had to say.
 
 In our opinion, neither sounded too convincing.
+]
 
+A comment has been attached: “Goddamn jackals.”
+</tw-passagedata><tw-passagedata pid="64" name="ProofreadingSession.eml" tags="" position="1025,1450" size="100,100">A work email.
 
-A comment has been attached: “Goddamn jackals.”</tw-passagedata><tw-passagedata pid="64" name="ProofreadingSession.eml" tags="" position="1025,1450" size="100,100">A work email.
-
-Mon 01/08  
+Mon 08/01  
 
 10.00 AM
 
@@ -1127,12 +1203,14 @@ To:
 William Redson
 
 Text: 
+(box:&quot;X&quot;,5)[
 Hello William, we should meet this Friday to work on the new chapter.
 The editor’s been on my case, I’ve got to finish it before Monday.
 
 Thanks,
 
-Richard</tw-passagedata><tw-passagedata pid="65" name="SecuritySystemSpecifications1.eml" tags="" position="1175,1450" size="100,100">An email from a security firm.
+Richard
+]</tw-passagedata><tw-passagedata pid="65" name="SecuritySystemSpecifications1.eml" tags="" position="1175,1450" size="100,100">An email from a security firm.
 
 Mon 05/02
 
@@ -1145,6 +1223,7 @@ From:
 Raindrop Security
 
 Text: 
+(box:&quot;X&quot;,5)[
 Esteemed Mr. Rover Owens,
 
 The custom comprehensive security system you’ve requested is 50% complete.
@@ -1161,7 +1240,8 @@ It follows that managing the logs and keeping them private will fall under your 
 If you have questions or further instructions for us, please do not hesitate to contact us.
 
 Sincerely, 
-Raindrop Security Team</tw-passagedata><tw-passagedata pid="66" name="Ideas.eml" tags="" position="1300,1450" size="100,100">A work email.
+Raindrop Security Team
+]</tw-passagedata><tw-passagedata pid="66" name="Ideas.eml" tags="" position="1300,1450" size="100,100">A work email.
 
 Sat 12/09
 
@@ -1174,6 +1254,7 @@ To:
 William Redson
 
 Text: 
+(box:&quot;X&quot;,5)[
 Hey Will, thanks for the brainstorming session, and for waiting for me at the door.
 
 To tell you the truth, it was open, I forgot to lock it, but thank God you didn’t try to enter, the alarm is a bitch when me and Annabelle are both out.
@@ -1181,7 +1262,8 @@ To tell you the truth, it was open, I forgot to lock it, but thank God you didn�
 I think I&#39;ll go with the last idea we were developing, the two beasts, Erkal and Karshel, chained together for all eternity, trying to kill each other. 
 
 See you next week,
-Richard</tw-passagedata><tw-passagedata pid="67" name="SecuritySystemSpecifications2.eml" tags="" position="1450,1450" size="100,100">An email from a security firm.
+Richard
+]</tw-passagedata><tw-passagedata pid="67" name="SecuritySystemSpecifications2.eml" tags="" position="1450,1450" size="100,100">An email from a security firm.
 
 Mon 11/03
 
@@ -1194,6 +1276,7 @@ From:
 Raindrop Security
 
 Text: 
+(box:&quot;X&quot;,5)[
 Esteemed customer,
 
 We’d like to inform you about best practices for your own customized security system:
@@ -1212,7 +1295,8 @@ As per our contract, Raindrop Security is not to be held legally liable should v
 
 Kind regards
 
-Raindrop Security Team</tw-passagedata><tw-passagedata pid="68" name="MaintenanceNotification.eml" tags="" position="1575,1450" size="100,100">An email from a security firm.
+Raindrop Security Team
+]</tw-passagedata><tw-passagedata pid="68" name="MaintenanceNotification.eml" tags="" position="1575,1450" size="100,100">An email from a security firm.
 
 Fri 04/19
 
@@ -1225,13 +1309,15 @@ From:
 Raindrop Security
 
 Text: 
+(box:&quot;X&quot;,5)[
 Esteemed custromer,
 
 We’d like to inform you that later this evening our servers will undergo routine maintenance for 3 hours from (time) to (time).
 Operations involving security logs may not work correctly during maintenance.
 We apologize for the inconvenience.
 
-Raindrop Security Team</tw-passagedata><tw-passagedata pid="69" name="ProofreadingSessionkey" tags="" position="1700,1450" size="100,100">A work email.
+Raindrop Security Team
+]</tw-passagedata><tw-passagedata pid="69" name="ProofreadingSessionkey" tags="" position="1700,1450" size="100,100">A work email.
 
 Sat 03/23
 
@@ -1244,6 +1330,7 @@ To:
 William Redson
 
 Text: 
+(box:&quot;X&quot;,5)[
 Hello William.
 I was thinking, the security system made us waste a lot of time last time you came here to help me with the draft.
 
@@ -1255,16 +1342,17 @@ That way even if I am not home when you arrive, you can still get in and get com
 
 Thanks,
 
-Richard</tw-passagedata><tw-passagedata pid="70" name="Documents F" tags="" position="1000,1825" size="100,100">(link: &quot;Certificate.png&quot;)[($nav: 4,&quot;Certificate.png&quot;)]
+Richard
+]</tw-passagedata><tw-passagedata pid="70" name="Documents F" tags="" position="1000,1825" size="100,100">(link: &quot;Certificate.png&quot;)[($nav: 4,&quot;Certificate.png&quot;)]
 
 </tw-passagedata><tw-passagedata pid="71" name="Certificate.png" tags="" position="1125,1825" size="100,100">A marriage certificate issued more than 15 years ago.
 
 Richard Rover Owens (20) married Annabelle Blanc(20).
 
 
-(link: &quot;Documents F&quot;)[($nav: 3,&quot;Documents F&quot;)]</tw-passagedata><tw-passagedata pid="72" name="Mail F" tags="" position="1000,1950" size="100,100">(link: &quot;Trip?.eml&quot;)[($nav: 4,&quot;Trip?.eml&quot;)]
+&lt;!--(link: &quot;Documents F&quot;)[($nav: 3,&quot;Documents F&quot;)]--&gt;</tw-passagedata><tw-passagedata pid="72" name="Mail F" tags="" position="1000,1950" size="100,100">(link: &quot;Trip?.eml&quot;)[($nav: 4,&quot;Trip?.eml&quot;)]
 
-</tw-passagedata><tw-passagedata pid="73" name="Messages F" tags="" position="1000,2075" size="100,100">(link: &quot;0215_11.00.msg&quot;)[($nav: 4,&quot;0215_11.00.msg&quot;)]
+</tw-passagedata><tw-passagedata pid="73" name="Messages F" tags="" position="1000,2075" size="100,100">(link: &quot;1502_11.00.msg&quot;)[($nav: 4,&quot;1502_11.00.msg&quot;)]
 
 </tw-passagedata><tw-passagedata pid="74" name="Trip?.eml" tags="" position="1125,1950" size="100,100">An email.
 
@@ -1279,6 +1367,7 @@ To:
 William Redson
 
 Text: 
+(box:&quot;X&quot;,5)[
 Hey Will, I was thinking, why don’t we go to the lake this weekend?
 We can have fun, take the edge off. 
 We get some beers, roast some fish we catch, have a guys’ night outdoors, like we did back then. 
@@ -1290,13 +1379,13 @@ Hope you can make it, I really could use my best friend right now.
 
 Sincerely,
 Richard
-
-(link: &quot;Mail F&quot;)[($nav: 3,&quot;Mail F&quot;)]</tw-passagedata><tw-passagedata pid="75" name="0215_11.00.msg" tags="" position="1125,2075" size="100,100">A message exchange between Richard Rover Owens and William Redson.
+]
+&lt;!--(link: &quot;Mail F&quot;)[($nav: 3,&quot;Mail F&quot;)]--&gt;</tw-passagedata><tw-passagedata pid="75" name="1502_11.00.msg" tags="" position="1125,2075" size="100,100">A message exchange between Richard Rover Owens and William Redson.
 
 Thu 02/15
 
 11.00 AM
-
+(box:&quot;X&quot;,5)[
 Will, Will, my man.
 You are a nice guy, smart, got some money, in perfect shape. 
 You had it in the bag.
@@ -1310,29 +1399,38 @@ Don’t tell me you are still seeking your mysterious “shining star”.
 It’s been, what, 20 years?
 I get being a romantic, but hell.
 
+==&gt;
 Dick, I just wasn’t interested. 
 Thank you for your concern, but please don’t try to set me up for a date again.
 
+&lt;==
 Ok man, suit yourself.
+]
+&lt;!--(link: &quot;Messages F&quot;)[($nav: 3,&quot;Messages F&quot;)--&gt;</tw-passagedata><tw-passagedata pid="76" name="1904_8.35.msg" tags="" position="925,875" size="100,100">A message exchange between William Redson and Richard Rover Owen.
 
-(link: &quot;Messages F&quot;)[($nav: 3,&quot;Messages F&quot;)]</tw-passagedata><tw-passagedata pid="76" name="0419_8.35.msg" tags="" position="925,875" size="100,100">A message exchange between William Redson and Richard Rover Owen.
-
-Fri 04/19  
+Fri 19/04  
 
 8.35 AM
+(box:&quot;X&quot;,5)[
 
+==&gt;
 Hey Richard, great idea! I’ll be there.
 
+&lt;==
 Christ Will, I wrote two minutes ago.
 
+==&gt;
 I was jogging, had my phone out. I’m close by actually.
 
+&lt;==
 Isn’t your house a few km away? I don’t know where you get the energy.
 Since you’re here, how about some coffee?
 
-Sure!</tw-passagedata><tw-passagedata pid="77" name="Aboutyouroffer.eml" tags="" position="1175,1000" size="100,100">An email.
+==&gt;
+Sure!
+]</tw-passagedata><tw-passagedata pid="77" name="Aboutyouroffer.eml" tags="" position="1175,1000" size="100,100">An email.
 
-Thu 04/13  
+Thu 13/04  
 
 3.00 PM
 
@@ -1343,26 +1441,30 @@ From:
 Olivia Blanc
 
 Text: 
+(box:&quot;X&quot;,5)[
 Reread your last message, Richard.
 I’m in, really curious to see what my little sis has been up to all these years.
 
 When you guys need me, let me know.
 
-Olivia</tw-passagedata><tw-passagedata pid="78" name="2F01_20_04_0135.vid" tags="" position="1950,300" size="100,100">A recording from the security camera in the Hallway of the 2nd floor.
+Olivia
+]</tw-passagedata><tw-passagedata pid="78" name="2F01_20_04_0135.vid" tags="" position="1950,300" size="100,100">A recording from the security camera in the Hallway of the 2nd floor.
 
 Camera: 2F_01
 
 4/20
+(box:&quot;X&quot;,5)[
 
 01.35
 
 File deleted
-
-(link: &quot;Video&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Video&quot;) (go-to: &quot;Video&quot;)]</tw-passagedata><tw-passagedata pid="79" name="2F01_20_04_0900.vid" tags="" position="2075,300" size="100,100">A couple of recordings from the security camera in the Hallway of the 2nd floor.
+]
+&lt;!--(link: &quot;Video&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Video&quot;) (go-to: &quot;Video&quot;)]--&gt;</tw-passagedata><tw-passagedata pid="79" name="2F01_20_04_0900.vid" tags="" position="2075,300" size="100,100">A couple of recordings from the security camera in the Hallway of the 2nd floor.
 
 Camera: 2F_01
 
 4/20
+(box:&quot;X&quot;,5)[
 
 9.00
 
@@ -1376,13 +1478,13 @@ After knocking and calling for Richard multiple times, she opens the door and en
 Less than a minute after entering, Annabelle comes out in a hurry. 
 She rushes towards the Stairs. 
 She looks panicked, like she’s going to faint at any time.
-
-(link: &quot;Video&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Video&quot;) (go-to: &quot;Video&quot;)]</tw-passagedata><tw-passagedata pid="80" name="2F04_20_04_1000.mp4" tags="" position="2450,500" size="100,100">An audio recording from a microphone in the Bedroom.
+]
+&lt;!--(link: &quot;Video&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Video&quot;) (go-to: &quot;Video&quot;)]&gt;</tw-passagedata><tw-passagedata pid="80" name="2F04_20_04_1000.mp4" tags="" position="2450,500" size="100,100">An audio recording from a microphone in the Bedroom.
 
 Mic: 2F_04
 
 4/20
-
+(box:&quot;X&quot;,5)[
 10.00
 
 “Let’s see… good, it’s recording. I really hope they give me a new one soon.
@@ -1405,13 +1507,14 @@ No signs of struggle were found.
 Aside from the blood, the room looks pristine.
 
 The victim had to be unconscious when he was attacked, and must have died before he could wake up.
-
-(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]
+]
+&lt;!--(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]--&gt;
 </tw-passagedata><tw-passagedata pid="81" name="2F02_20_04_1000.mp4" tags="" position="2575,500" size="100,100">An audio recording from a microphone in the Second Floor Hallway.
 
 Mic: 2F_02
 
 4/20
+(box:&quot;X&quot;,5)[
 
 10.00
 
@@ -1422,36 +1525,40 @@ Mic: 2F_02
 “Miss”
 
 “Enough. Someone get her out of here!”
-
-(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]</tw-passagedata><tw-passagedata pid="82" name="1F01_19_04_2200.mp4" tags="" position="2950,500" size="100,100">A partial audio recording from a microphone at the Entrance.
+]
+&lt;!--(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]--&gt;</tw-passagedata><tw-passagedata pid="82" name="1F01_19_04_2200.mp4" tags="" position="2950,500" size="100,100">A partial audio recording from a microphone at the Entrance.
 
 Mic: 1F_01
 
 4/19
+(box:&quot;X&quot;,5)[
 
 22.00
 
 “Please, this is not a good idea…”
 
 “Good night.”
-
-(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]</tw-passagedata><tw-passagedata pid="83" name="HeaderFilePath" tags="header" position="250,100" size="100,100">{(if: $pathlv is 1)
-[
+]
+&lt;!--(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]--&gt;</tw-passagedata><tw-passagedata pid="83" name="HeaderFilePath" tags="header" position="250,100" size="100,100">{(if: $pathlv is 1)
+|navlink&gt;[
 (link: &quot;$pathn1&quot;+&quot;/&quot;)[(set: $pathlv to 1) (set: $pathn1 to $pathn1) (go-to: $pathn1)]
 ]
 (if: $pathlv is 2)
-[
+|navlink&gt;[
 (link: &quot;$pathn1&quot;+&quot;/&quot;)[(set: $pathlv to 1) (set: $pathn1 to $pathn1) (go-to: $pathn1)](link: &quot;$pathn2&quot;+&quot;/&quot;)[(set: $pathlv to 2) (set: $pathn2 to $pathn2) (go-to: $pathn2)]
 ]
 (if:$pathlv is 3)
-[
+|navlink&gt;[
 (link: &quot;$pathn1&quot;+&quot;/&quot;)[(set: $pathlv to 1) (set: $pathn2 to $pathn1) (go-to: $pathn1)](link: &quot;$pathn2&quot;+&quot;/&quot;)[(set: $pathlv to 2) (set: $pathn2 to $pathn2) (go-to: $pathn2)](link: &quot;$pathn3&quot;+&quot;/&quot;)[(set: $pathlv to 3) (set: $pathn3 to $pathn3) (go-to: $pathn3)]
 ]
 (if:$pathlv is 4)
-[
+|navlink&gt;[
 (link: &quot;$pathn1&quot;+&quot;/&quot;)[(set: $pathlv to 1) (set: $pathn2 to $pathn1) (go-to: $pathn1)](link: &quot;$pathn2&quot;+&quot;/&quot;)[(set: $pathlv to 2) (set: $pathn2 to $pathn2) (go-to: $pathn2)](link: &quot;$pathn3&quot;+&quot;/&quot;)[(set: $pathlv to 3) (set: $pathn3 to $pathn3) (go-to: $pathn3)](link: &quot;$pathn4&quot;+&quot;/&quot;)[(set: $pathlv to 4) (set: $pathn4 to $pathn4) (go-to: $pathn4)]
 ]
 }
+&lt;br&gt;
+
+
 
 </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
