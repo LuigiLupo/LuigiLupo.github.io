@@ -9,7 +9,7 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play Precursor2.0_prototype.</tw-noscript></noscript></tw-story>
-<tw-storydata name="Precursor2.0_prototype" startnode="1" creator="Twine" creator-version="2.8.1" format="Harlowe" format-version="3.3.8" ifid="68666237-449E-4AF7-B616-F93A2B07CED8" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar {
+<tw-storydata name="Precursor2.0_prototype" startnode="84" creator="Twine" creator-version="2.8.1" format="Harlowe" format-version="3.3.8" ifid="68666237-449E-4AF7-B616-F93A2B07CED8" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar {
   display:none;
 }
 tw-story select {
@@ -29,7 +29,7 @@ tw-hook[name="quelink"] tw-link, tw-hook[name="quelink"] .enchantment-link {
 
 tw-hook[name="locklink"] tw-link, tw-hook[name="locklink"] .enchantment-link {
     color: red;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Desktop" tags="" position="1125,225" size="100,100">(link: &quot;Work&quot;)[($nav: 2,&quot;Work&quot;)]
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Desktop" tags="" position="1300,200" size="100,100">(link: &quot;Work&quot;)[($nav: 2,&quot;Work&quot;)]
 
 (link: &quot;Family&amp;FreeTime&quot;)[($nav: 2,&quot;Family&amp;FreeTime&quot;)]
 
@@ -102,13 +102,13 @@ Security codes will be required to access the database.
 
 
 
-</tw-passagedata><tw-passagedata pid="6" name="FooterQuestMenu" tags="footer" position="400,100" size="100,100">&lt;br&gt;
+</tw-passagedata><tw-passagedata pid="6" name="FooterQuestMenu" tags="footer nofooter noheader" position="400,100" size="100,100">&lt;br&gt;
+(unless: (passage:)&#39;s tags contains &quot;nofooter&quot;)[
 |quelink&gt;[(link: &quot;Questionnaires&quot;)[($nav: 1,&quot;Questionnaires&quot;)]]
 
 
 |quelink&gt;[(link: &quot;Desktop&quot;)[($nav: 1,&quot;Desktop&quot;)]]
-
-</tw-passagedata><tw-passagedata pid="7" name="Questionnaires" tags="" position="100,400" size="100,100">(box:&quot;X&quot;,5)[
+]</tw-passagedata><tw-passagedata pid="7" name="Questionnaires" tags="" position="100,400" size="100,100">(box:&quot;X&quot;,5)[
 {(if: $progress is 0)[ (link: &quot;Quest 1&quot;)[($nav: 2,&quot;Quest 1&quot;)] ]
 (else-if: $progress is 1)[ (link: &quot;Quest 2&quot;)[($nav: 2,&quot;Quest 2&quot;)] ]
 (else-if: $progress is 2)[ (link: &quot;Quest 3&quot;)[($nav: 2,&quot;Quest 3&quot;)] ]
@@ -123,6 +123,8 @@ Security codes will be required to access the database.
 }
 ]
 </tw-passagedata><tw-passagedata pid="8" name="Init Vars" tags="startup" position="100,100" size="100,100">{
+(set: $keytut to true)
+
 (set: $progress to 0)
 
 (set: $keysec1 to true)
@@ -1539,7 +1541,9 @@ Mic: 1F_01
 
 “Good night.”
 ]
-&lt;!--(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]--&gt;</tw-passagedata><tw-passagedata pid="83" name="HeaderFilePath" tags="header" position="250,100" size="100,100">{(if: $pathlv is 1)
+&lt;!--(link: &quot;Audio&quot;)[(set: $pathlv to 3) (set: $pathn3 to &quot;Audio&quot;) (go-to: &quot;Audio&quot;)]--&gt;</tw-passagedata><tw-passagedata pid="83" name="HeaderFilePath" tags="header" position="250,100" size="100,100">(unless: (passage:)&#39;s tags contains &quot;noheader&quot;)
+[
+{(if: $pathlv is 1)
 |navlink&gt;[
 (link: &quot;$pathn1&quot;+&quot;/&quot;)[(set: $pathlv to 1) (set: $pathn1 to $pathn1) (go-to: $pathn1)]
 ]
@@ -1556,11 +1560,102 @@ Mic: 1F_01
 (link: &quot;$pathn1&quot;+&quot;/&quot;)[(set: $pathlv to 1) (set: $pathn2 to $pathn1) (go-to: $pathn1)](link: &quot;$pathn2&quot;+&quot;/&quot;)[(set: $pathlv to 2) (set: $pathn2 to $pathn2) (go-to: $pathn2)](link: &quot;$pathn3&quot;+&quot;/&quot;)[(set: $pathlv to 3) (set: $pathn3 to $pathn3) (go-to: $pathn3)](link: &quot;$pathn4&quot;+&quot;/&quot;)[(set: $pathlv to 4) (set: $pathn4 to $pathn4) (go-to: $pathn4)]
 ]
 }
+]
 &lt;br&gt;
 
 
 
-</tw-passagedata></tw-storydata>
+</tw-passagedata><tw-passagedata pid="84" name="Intro" tags="noheader nofooter" position="800,100" size="100,100">Hello and welcome to the text based demo for Precursor 2.0.
+
+Accomplished novelist and filmmaker Richard Rover-Owens has been brutally killed.
+
+As the detective assigned to the case, you have been granted access to the victim&#39;s laptop, and your intuition tells you the key to the case lies somewhere inside of it.
+
+It&#39;s up to you to uncover the truth.
+
+Please proceed to the tutorial to learn how to play the game by clicking on the link below.
+
+[[Tutorial: text]]</tw-passagedata><tw-passagedata pid="85" name="Tutorial: text" tags="noheader nofooter" position="800,225" size="100,100">
+Time: before the investigation starts.
+
+(box:&quot;X&quot;,5)[
+
+Here are a few things you&#39;ll need to know to play this game:
+
+You will be navigating files on the victim&#39;s computer, reading text to look for clues to solve the case. 
+Read attentively, we recommend having a notepad nearby to jot down notes for the true detective experience.
+
+The main content of any given file will be contained in a scrolling box, just like you can see on this very page. 
+Text outside the scrolling box usually provides useful secondary information, such as the time and date of creation of a certain file. 
+See for instance the &quot;time&quot; information on this page.
+
+[[Tutorial: links]]
+]</tw-passagedata><tw-passagedata pid="86" name="Tutorial: links" tags="nofooter noheader" position="800,350" size="100,100">|navlink&gt;[ [[Tutorial: text]] / [[Tutorial: links]]]
+
+Time: before the investigation starts
+
+(box:&quot;X&quot;,5)[
+
+Clicking on links is how you will navigate the victim&#39;s computer.
+
+Different colors mean different things:
+
+[[Blue Links -&gt;Tutorial: links]] are regular links to files or folders, this one for instance will lead you to this page.
+
+(if: $keytut is true)
+[
+|locklink&gt;[[Red links]&lt;PasswordTut|] are locked. 
+To gain access to the file or folder they link to, you will have to find and input a password. 
+Passwords never contain MAIUSC letters, but can be more than one word, with one space inbetween.
+Some passwords will unlock multiple files or folders at once.
+In this case, the password is password. Please try it out.
+]
+
+(if: $keytut is false)
+[
+Well done, the [[link -&gt;Tutorial: links]] is now unlocked, though it still leads here.
+]
+
+You have no doubt noticed the green links at the top of the page, and the yellow one at the bottom. 
+Green links are the file path, use them to go back through the path and look elsewhere.
+
+Yellow links are quick links to useful pages, such as the Desktop and the Questionnaires. 
+
+Please use the yellow link below to proceed to the final part of the tutorial.
+]
+
+|quelink&gt;[ [[Tutorial: questionnaires]]  ]
+
+{
+(click:?PasswordTut)
+[
+	(set: _answertut to (prompt: &quot;Password is password&quot;,&quot;&quot;))[_answertut]
+    (if: _answertut is &quot;password&quot;)[(set: $keytut to false) (go-to:&quot;Tutorial: links&quot;)] else:
+    [(go-to:&quot;Tutorial: links&quot;)]
+]
+}</tw-passagedata><tw-passagedata pid="87" name="Tutorial: questionnaires" tags="nofooter noheader" position="975,350" size="100,100">|navlink&gt;[ [[Tutorial: text]] / [[Tutorial: links]] / [[Tutorial: questionnaires]] ]
+
+Solving Questionnaires is how you make progress on the case.
+
+Each one will pose a question. To answer it, you will select data from the drop down menus, and then verify to see if your hypothesis is correct. 
+
+Example:
+
+What color corresponds to what kind of text/link?
+
+Normal text: (dropdown:  bind _t1, &quot;white&quot;,&quot;black&quot;,&quot;blue&quot;,&quot;red&quot;,&quot;yellow&quot;,&quot;orange&quot;,&quot;purple&quot;,&quot;green&quot;)
+
+Link: (dropdown:  bind _t2, &quot;white&quot;,&quot;black&quot;,&quot;blue&quot;,&quot;red&quot;,&quot;yellow&quot;,&quot;orange&quot;,&quot;purple&quot;,&quot;green&quot;)
+
+Locked Link: (dropdown:  bind _t3, &quot;white&quot;,&quot;black&quot;,&quot;blue&quot;,&quot;red&quot;,&quot;yellow&quot;,&quot;orange&quot;,&quot;purple&quot;,&quot;green&quot;)
+
+
+[Verify]&lt;Verify|
+
+(click: ?Verify)
+[
+(if: _t1 is &quot;white&quot; and _t2 is &quot;blue&quot; and _t3 is &quot;red&quot;)[Correct (go-to:&quot;Desktop&quot;)](else:)[Incorrect (go-to: &quot;Tutorial: questionnaires&quot;)]
+]</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
