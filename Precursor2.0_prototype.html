@@ -1575,7 +1575,14 @@ It&#39;s up to you to uncover the truth.
 
 Please proceed to the tutorial to learn how to play the game by clicking on the link below.
 
-[[Tutorial: text]]</tw-passagedata><tw-passagedata pid="85" name="Tutorial: text" tags="noheader nofooter" position="800,225" size="100,100">
+[[Tutorial: text]]
+
+[Skip Tutorial]&lt;Skip|
+
+(click: ?Skip)
+[
+[(go-to:&quot;Desktop&quot;)]
+]</tw-passagedata><tw-passagedata pid="85" name="Tutorial: text" tags="noheader nofooter" position="800,225" size="100,100">
 Time: before the investigation starts.
 
 (box:&quot;X&quot;,5)[
@@ -1590,6 +1597,13 @@ Text outside the scrolling box usually provides useful secondary information, su
 See for instance the &quot;time&quot; information on this page.
 
 [[Tutorial: links]]
+]
+
+[Skip Tutorial]&lt;Skip|
+
+(click: ?Skip)
+[
+[(go-to:&quot;Desktop&quot;)]
 ]</tw-passagedata><tw-passagedata pid="86" name="Tutorial: links" tags="nofooter noheader" position="800,350" size="100,100">|navlink&gt;[ [[Tutorial: text]] / [[Tutorial: links]]]
 
 Time: before the investigation starts
@@ -1602,6 +1616,7 @@ Different colors mean different things:
 
 [[Blue Links -&gt;Tutorial: links]] are regular links to files or folders, this one for instance will lead you to this page.
 
+{
 (if: $keytut is true)
 [
 |locklink&gt;[[Red links]&lt;PasswordTut|] are locked. 
@@ -1615,6 +1630,7 @@ In this case, the password is password. Please try it out.
 [
 Well done, the [[link -&gt;Tutorial: links]] is now unlocked, though it still leads here.
 ]
+}
 
 You have no doubt noticed the green links at the top of the page, and the yellow one at the bottom. 
 Green links are the file path, use them to go back through the path and look elsewhere.
@@ -1625,6 +1641,13 @@ Please use the yellow link below to proceed to the final part of the tutorial.
 ]
 
 |quelink&gt;[ [[Tutorial: questionnaires]]  ]
+
+[Skip Tutorial]&lt;Skip|
+
+(click: ?Skip)
+[
+[(go-to:&quot;Desktop&quot;)]
+]
 
 {
 (click:?PasswordTut)
@@ -1655,6 +1678,13 @@ Locked Link: (dropdown:  bind _t3, &quot;white&quot;,&quot;black&quot;,&quot;blu
 (click: ?Verify)
 [
 (if: _t1 is &quot;white&quot; and _t2 is &quot;blue&quot; and _t3 is &quot;red&quot;)[Correct (go-to:&quot;Desktop&quot;)](else:)[Incorrect (go-to: &quot;Tutorial: questionnaires&quot;)]
+]
+
+[Skip Tutorial]&lt;Skip|
+
+(click: ?Skip)
+[
+[(go-to:&quot;Desktop&quot;)]
 ]</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
