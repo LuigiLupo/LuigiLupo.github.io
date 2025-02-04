@@ -244,21 +244,22 @@ When? (dropdown:  bind _q4, &quot;Morning&quot;,&quot;Afternoon&quot;,&quot;Even
 [
 (if: _q1 is &quot;Stabbed&quot; and _q2 is &quot;Bedroom&quot; and _q3 is &quot;Annabelle&quot; and _q4 is &quot;Night&quot; )[Correct (set: $progress to 4) (go-to:&quot;Questionnaires&quot;)](else:)[Incorrect (go-to: &quot;Quest 4&quot;)]
 ]
-</tw-passagedata><tw-passagedata pid="13" name="Quest 5" tags="" position="200,625" size="100,100">What is the timeline of events?
+</tw-passagedata><tw-passagedata pid="13" name="Quest 5" tags="" position="200,625" size="100,100">possible discrepancy detected. Initiating data coherency check. 
+What is the timeline of the known events?
 
-1)(dropdown:  bind _q1, &quot;Fight&quot;,&quot;A kills R&quot;,&quot;A finds R&#39;s body&quot;,&quot;R is Stabbed&quot;,&quot;Guests leave&quot;,&quot;Guests arrive&quot;,&quot;A carries R upstairs&quot;)
-2)(dropdown:  bind _q2, &quot;Fight&quot;,&quot;A kills R&quot;,&quot;A finds R&#39;s body&quot;,&quot;R is Stabbed&quot;,&quot;Guests leave&quot;,&quot;Guests arrive&quot;,&quot;A carries R upstairs&quot;)
-3)(dropdown:  bind _q3, &quot;Fight&quot;,&quot;A kills R&quot;,&quot;A finds R&#39;s body&quot;,&quot;R is Stabbed&quot;,&quot;Guests leave&quot;,&quot;Guests arrive&quot;,&quot;A carries R upstairs&quot;)
-4)(dropdown:  bind _q4, &quot;Fight&quot;,&quot;A kills R&quot;,&quot;A finds R&#39;s body&quot;,&quot;R is Stabbed&quot;,&quot;Guests leave&quot;,&quot;Guests arrive&quot;,&quot;A carries R upstairs&quot;)
-5)(dropdown:  bind _q5, &quot;Fight&quot;,&quot;A kills R&quot;,&quot;A finds R&#39;s body&quot;,&quot;R is Stabbed&quot;,&quot;Guests leave&quot;,&quot;Guests arrive&quot;,&quot;A carries R upstairs&quot;)
-6)(dropdown:  bind _q6, &quot;Fight&quot;,&quot;A kills R&quot;,&quot;A finds R&#39;s body&quot;,&quot;R is Stabbed&quot;,&quot;Guests leave&quot;,&quot;Guests arrive&quot;,&quot;A carries R upstairs&quot;)
-7)(dropdown:  bind _q7, &quot;Fight&quot;,&quot;A kills R&quot;,&quot;A finds R&#39;s body&quot;,&quot;R is Stabbed&quot;,&quot;Guests leave&quot;,&quot;Guests arrive&quot;,&quot;A carries R upstairs&quot;)
+1)(dropdown:  bind _q1, &quot;Fight&quot;,&quot;A kills R&quot;,&quot;A finds R&#39;s body&quot;,&quot;R is fatally stabbed&quot;,&quot;Guests leave&quot;,&quot;Guests arrive&quot;,&quot;A carries R upstairs&quot;)
+2)(dropdown:  bind _q2, &quot;Fight&quot;,&quot;A kills R&quot;,&quot;A finds R&#39;s body&quot;,&quot;R is fatally stabbed&quot;,&quot;Guests leave&quot;,&quot;Guests arrive&quot;,&quot;A carries R upstairs&quot;)
+3)(dropdown:  bind _q3, &quot;Fight&quot;,&quot;A kills R&quot;,&quot;A finds R&#39;s body&quot;,&quot;R is fatally stabbed&quot;,&quot;Guests leave&quot;,&quot;Guests arrive&quot;,&quot;A carries R upstairs&quot;)
+4)(dropdown:  bind _q4, &quot;Fight&quot;,&quot;A kills R&quot;,&quot;A finds R&#39;s body&quot;,&quot;R is fatally stabbed&quot;,&quot;Guests leave&quot;,&quot;Guests arrive&quot;,&quot;A carries R upstairs&quot;)
+5)(dropdown:  bind _q5, &quot;Fight&quot;,&quot;A kills R&quot;,&quot;A finds R&#39;s body&quot;,&quot;R is fatally stabbed&quot;,&quot;Guests leave&quot;,&quot;Guests arrive&quot;,&quot;A carries R upstairs&quot;)
+6)(dropdown:  bind _q6, &quot;Fight&quot;,&quot;A kills R&quot;,&quot;A finds R&#39;s body&quot;,&quot;R is fatally stabbed&quot;,&quot;Guests leave&quot;,&quot;Guests arrive&quot;,&quot;A carries R upstairs&quot;)
+7)(dropdown:  bind _q7, &quot;Fight&quot;,&quot;A kills R&quot;,&quot;A finds R&#39;s body&quot;,&quot;R is fatally stabbed&quot;,&quot;Guests leave&quot;,&quot;Guests arrive&quot;,&quot;A carries R upstairs&quot;)
 
 [Verify]&lt;Verify|
 
 (click: ?Verify)
 [
-(if: _q1 is &quot;Guests arrive&quot; and _q2 is &quot;Fight&quot; and _q3 is &quot;A kills R&quot; and _q4 is &quot;A carries R upstairs&quot;  and _q5 is &quot;Guests leave&quot; and _q6 is &quot;R is Stabbed&quot; and _q7 is &quot;A finds R&#39;s body&quot;)[Correct (set: $progress to 5) (go-to:&quot;Q5 error&quot;)](else:)[Incorrect (go-to: &quot;Quest 5&quot;)]
+(if: _q1 is &quot;Guests arrive&quot; and _q2 is &quot;Fight&quot; and _q3 is &quot;A kills R&quot; and _q4 is &quot;A carries R upstairs&quot;  and _q5 is &quot;Guests leave&quot; and _q6 is &quot;R is fatally stabbed&quot; and _q7 is &quot;A finds R&#39;s body&quot;)[Correct (set: $progress to 5) (go-to:&quot;Q5 error&quot;)](else:)[Incorrect (go-to: &quot;Quest 5&quot;)]
 ]
 </tw-passagedata><tw-passagedata pid="14" name="Quest 6" tags="" position="325,625" size="100,100">How could A kill R in the Kitchen?(dropdown:  bind _q1, &quot;Stabbing&quot;,&quot;Medication&quot;,&quot;Shooting&quot;,&quot;Bomb&quot;,&quot;Improvised weapon&quot;,&quot;Algebra&quot;)
 
@@ -350,7 +351,7 @@ How did the murderer leave the house undetected?(dropdown:  bind _q6,&quot;Sabot
 (click: ?Verify)
 [
 (if: _q1 is &quot;William&quot; and _q2 is &quot;Bedroom&quot; and _q3 is &quot;Night&quot; and _q4 is &quot;Stabbed&quot; and _q5 is &quot;Drugged&quot; and _q6 is &quot;Studio window&quot; )[Correct (set: $progress to 10) (go-to:&quot;Questionnaires&quot;)](else:)[Incorrect (go-to: &quot;Quest 10&quot;)]
-]</tw-passagedata><tw-passagedata pid="19" name="Q5 error" tags="" position="450,750" size="100,100">ERROR: DATA PROVIDED CONTAINS INCONSISTENCIES
+]</tw-passagedata><tw-passagedata pid="19" name="Q5 error" tags="" position="450,750" size="100,100">INCONSISTENCIES CONFIRMED: R CANNOT HAVE DIED TWICE.
 </tw-passagedata><tw-passagedata pid="20" name="Logs" tags="" position="1700,0" size="100,100">(link: &quot;sys_20_04_0135.log&quot;)[($nav: 4,&quot;sys_20_04_0135.log&quot;)]
 
 (link: &quot;del_20_04_0900.log&quot;)[($nav: 4,&quot;del_20_04_0900.log&quot;)]</tw-passagedata><tw-passagedata pid="21" name="Sensors" tags="" position="1700,125" size="100,100">(link: &quot;sen_19&amp;2004F2D1.log&quot;)[($nav: 4,&quot;sen_19&amp;2004F2D1.log&quot;)]
